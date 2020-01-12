@@ -1,0 +1,4 @@
+netstat -aon | findstr 8080
+
+
+task manager
