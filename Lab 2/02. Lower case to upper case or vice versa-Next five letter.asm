@@ -10,7 +10,8 @@ org 100h
     mov ah, 01
     int 21h  
     
-    mov bl, al
+    mov bl, al  
+    mov cx, 5
     
     ;new line
     mov ah, 02
@@ -21,26 +22,38 @@ org 100h
     mov dl, 10
     int 21h
     
-    
-   cmp bl, 97
+      ;compare
+    cmp bl, 97 
+    ;ceck conditon
     jge small_to_capital
-    
-   capital_to_small:
-    
-    add bl, 32
+                          
+        
+    add bl, 33                      
+    capital_to_small:
+ 
     
     mov ah, 02
     mov dl, bl
-    int 21h
+    int 21h 
+    inc bl
+    
+    loop capital_to_small
     jmp exit
     
-    
+     
+     ;small to capital
     small_to_capital:
-        sub bl, 32
-        
+       
+                sub bl, 31
+                
+        capital:
         mov ah, 02
         mov dl, bl
-        int 21h
+        int 21h 
+        inc bl 
+        
+        loop capital
+        
         
     exit:
     
